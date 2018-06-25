@@ -1,0 +1,64 @@
+<% include header %>
+
+<div class="container" style="max-width: 500px; width: 100%; margin-top: 100px">
+    <form> <!-- action="/post_card_info" method="POST">-->
+        <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputEmail1"
+                   placeholder="Company Name" name="CompanyName">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   placeholder="Position" name="Position">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   placeholder="Role" name="Role">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   placeholder="Contest Type" name="ContestType">
+        </div>
+        <div class="form-group">
+            Start Date: <input type="date" class="form-control" name="StartDate">
+        </div>
+        <div class="form-group">
+            Start Time<input type="time" class="form-control" name="StartTime">
+        </div>
+        <div class="form-group">
+            End Date: <input type="date" class="form-control" name="EndDate">
+        </div>
+        <div class="form-group">
+            End Time: <input type="time" class="form-control" name="EndTime">
+        </div>
+        <div class="form-group">
+            <input type="url" class="form-control"
+                   placeholder="Company Image" name="CompanyImage">
+        </div>
+        <div class="form-group">
+            <input type="url" class="form-control"
+                   placeholder="Competition Image" name="CompetitionImage">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   placeholder="Company Address" name="CompAdd">
+        </div>
+        <button type="submit" class="btn btn-primary">Make Entry</button>
+    </form>
+</div>
+
+<script>
+
+    $('form').submit(function (event) {
+
+        let data_to_post = $('form').serialize()
+        let url = '/cards/post_card_info'
+
+        $.post(url, data_to_post, function (data, status, json_info) {
+
+            window.location = data.redirect
+        })
+    })
+
+</script>
+
+<% include end %>
